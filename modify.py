@@ -30,7 +30,7 @@ def process_csv_line(line, xml_folder_path):
     # Save the modified XML to a new file
     new_xml_filename = f"{unique_id}_{original_xml_filename}"
     new_xml_path = f"{xml_folder_path}/{new_xml_filename}"
-    with open(new_xml_path, "w") as new_xml_file:
+    with open(new_xml_path, "w", encoding="utf-8") as new_xml_file:
         new_xml_file.write(xml_str)
 
 def main(csv_file_path, xml_folder_path):
