@@ -1,5 +1,4 @@
 import csv
-import re
 from xml.etree import ElementTree as ET
 
 def evaluate_math(expr):
