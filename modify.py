@@ -17,7 +17,7 @@ def process_csv_line(line, xml_folder_path):
     var_value_2 = evaluate_math(var_value_2)
     
     # Construct the path to the original XML file
-    original_xml_path = f"{xml_folder_path}/{original_xml_filename}"
+    original_xml_path = f"{xml_folder_path}/{original_xml_filename}.scx" # Suffix: ".scx"
     # Load the XML file
     tree = ET.parse(original_xml_path)
     root = tree.getroot()
@@ -40,6 +40,6 @@ def main(csv_file_path, xml_folder_path):
             process_csv_line(line, xml_folder_path)
 
 if __name__ == "__main__":
-    csv_file_path = 'path/to/your/csv_file.csv'
-    xml_folder_path = 'path/to/your/xml_files'
+    csv_file_path = 'CUTTING-LIST.csv'
+    xml_folder_path = 'TEMPLATE'
     main(csv_file_path, xml_folder_path)
