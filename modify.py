@@ -36,7 +36,7 @@ def compute_math_of_XML(xml_path, final_xml_path):
                 elem.set(attr, compute_expression(attr_value))
 
     # Save the modified XML back to the file
-    tree.write(final_xml_path)
+    tree.write(final_xml_path, encoding="utf-8")
 
 def process_csv_line(line, xml_folder_path):
     unique_id, original_xml_filename, var_name_1, var_value_1, var_name_2, var_value_2 = line
