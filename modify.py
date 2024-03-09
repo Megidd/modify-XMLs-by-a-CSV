@@ -1,5 +1,6 @@
 import csv
 import os
+import shutil
 from xml.etree import ElementTree as ET
 
 def evaluate_math(expr):
@@ -39,7 +40,7 @@ def compute_math_of_XML(xml_path, final_xml_path):
     # Save the modified XML back to the file
     tree.write(final_xml_path, encoding="utf-8")
 
-def process_csv_line(line, xml_folder_path):
+def process_csv_line(line, xml_folder_path, out_folder_path):
     unique_id, original_xml_filename, var_name_1, var_value_1, var_name_2, var_value_2 = line
     # Evaluate mathematical expressions in variable values
     var_value_1 = evaluate_math(var_value_1)
@@ -60,7 +61,7 @@ def process_csv_line(line, xml_folder_path):
     
         # Save the modified XML to a new file
         new_xml_filename = f"{unique_id}_{original_xml_filename}"
-        new_xml_path = f"{xml_folder_path}/{new_xml_filename}"
+        new_xml_path = f"{out_folder_path}/{new_xml_filename}"  # Use out_folder_path for saving
         with open(new_xml_path, "w", encoding="utf-8") as new_xml_file:
             new_xml_file.write(xml_str)
 
@@ -70,15 +71,21 @@ def process_csv_line(line, xml_folder_path):
         # Print a warning if the file does not exist
         print(f"Warning: The file {original_xml_path} does not exist.")
 
-def main(csv_file_path, xml_folder_path):
+def main(csv_file_path, xml_folder_path, out_folder_path):
+    # Check if it exists, delete and recreate it if it does, or create it if it doesn't
+    if os.path.exists(out_folder_path):
+        shutil.rmtree(out_folder_path)
+    os.makedirs(out_folder_path)
+
     with open(csv_file_path, newline='') as csvfile:
         csv_reader = csv.reader(csvfile, quotechar='"')
         for line in csv_reader:
-            process_csv_line(line, xml_folder_path)
+            process_csv_line(line, xml_folder_path, out_folder_path)
 
 if __name__ == "__main__":
     csv_file_path = 'CUTTING-LIST.csv'
     xml_folder_path = 'TEMPLATE'
-    main(csv_file_path, xml_folder_path)
+    out_folder_path = 'CadFiles'  # Define the output folder path
+    main(csv_file_path, xml_folder_path, out_folder_path)
     # To prevent the window from closing immediately after run
     input("Finished. Press any key to continue . . .")
