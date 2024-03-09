@@ -87,5 +87,6 @@ if __name__ == "__main__":
     xml_folder_path = 'TEMPLATE'
     out_folder_path = 'CadFiles'  # Define the output folder path
     main(csv_file_path, xml_folder_path, out_folder_path)
+
     # To prevent the window from closing immediately after run
     input("Finished. Press any key to continue . . .")
