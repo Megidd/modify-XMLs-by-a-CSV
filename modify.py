@@ -3,6 +3,8 @@ import os
 import shutil
 from xml.etree import ElementTree as ET
 
+debugging = False
+
 def evaluate_math(expr):
     try:
         # Evaluate the expression and return the result
@@ -39,6 +41,13 @@ def compute_math_of_XML(xml_path, final_xml_path):
 
     # Save the modified XML back to the file
     tree.write(final_xml_path, encoding="utf-8")
+
+    if debugging == False:
+        if os.path.exists(xml_path):
+            # Delete the file
+            os.remove(xml_path)
+        else:
+            print(f"The file {xml_path} does not exist. It should. Are inputs alright?")
 
 def process_csv_line(line, xml_folder_path, out_folder_path):
     unique_id, original_xml_filename, var_name_1, var_value_1, var_name_2, var_value_2 = line
