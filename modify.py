@@ -74,3 +74,5 @@ if __name__ == "__main__":
     csv_file_path = 'CUTTING-LIST.csv'
     xml_folder_path = 'TEMPLATE'
     main(csv_file_path, xml_folder_path)
+    # To prevent the window from closing immediately after run
+    input("Finished. Press any key to continue . . .")
