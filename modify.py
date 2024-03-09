@@ -67,6 +67,9 @@ def process_csv_line(line, xml_folder_path, out_folder_path):
         xml_str = ET.tostring(root, encoding='unicode')
         xml_str = xml_str.replace(var_name_1, var_value_1)
         xml_str = xml_str.replace(var_name_2, var_value_2)
+
+        # Replace the panel name/ID inside XML too.
+        xml_str = xml_str.replace(original_xml_filename, f"{unique_id}_{original_xml_filename}")
     
         # Save the modified XML to a new file
         new_xml_filename = f"{unique_id}_{original_xml_filename}"
