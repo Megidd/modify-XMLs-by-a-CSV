@@ -114,7 +114,10 @@ if __name__ == "__main__":
     csv_file_path = 'CUTTING-LIST.csv'
     xml_folder_path = 'TEMPLATE'
     out_folder_path = 'CadFiles'  # Define the output folder path
-    main(csv_file_path, xml_folder_path, out_folder_path)
+    try:
+        main(csv_file_path, xml_folder_path, out_folder_path)
+    except Exception as Ex:
+        print(Ex)
 
     # To prevent the window from closing immediately after run
     input("Finished. Press any key to continue . . .")
