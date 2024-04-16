@@ -41,7 +41,7 @@ def compute_math_of_XML(xml_path, final_xml_path):
                 elem.set(attr, compute_expression(attr_value))
 
     # Save the modified XML back to the file
-    tree.write(final_xml_path, encoding="utf-8")
+    tree.write(final_xml_path, encoding="utf-8", xml_declaration=True)
 
     if debugging == False:
         if os.path.exists(xml_path):
