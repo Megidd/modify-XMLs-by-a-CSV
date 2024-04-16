@@ -1,5 +1,6 @@
 import csv
 import os
+import re
 import shutil
 from xml.etree import ElementTree as ET
 
@@ -86,7 +87,7 @@ def process_csv_line(line, xml_folder_path, out_folder_path):
             xml_str = xml_str.replace(var_name_8, var_value_8)
 
             # Replace the panel name/ID inside XML too.
-            xml_str = xml_str.replace(original_xml_filename, f"{unique_id}-{original_xml_filename}")
+            xml_str = re.sub(r'ID="([^"]*)"', rf'ID="{unique_id}-{original_xml_filename}"', xml_str)
 
             # Save the modified XML to a new file
             new_xml_filename = f"{unique_id}-{original_xml_filename}"
