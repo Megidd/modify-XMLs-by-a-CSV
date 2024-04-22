@@ -51,12 +51,21 @@ def compute_math_of_XML(xml_path, final_xml_path):
             print(f"The file {xml_path} does not exist. It should. Are inputs alright?")
 
 def process_csv_line(line, xml_folder_path, out_folder_path):
+    var_name_1 = "VARL"
+    var_name_2 = "VARW"
+    var_name_3 = "VARX"
+    var_name_4 = "VARY"
+    var_name_5 = "VAR1"
+    var_name_6 = "VAR2"
+    var_name_7 = "VAR3"
+    var_name_8 = "VAR4"
+
     try:
         unique_id, original_xml_filename, \
-            var_name_1, var_value_1, var_name_2, var_value_2, \
-                var_name_3, var_value_3, var_name_4, var_value_4, \
-                    var_name_5, var_value_5, var_name_6, var_value_6, \
-                        var_name_7, var_value_7, var_name_8, var_value_8 = line
+            var_value_1, var_value_2, \
+                var_value_3, var_value_4, \
+                    var_value_5, var_value_6, \
+                        var_value_7, var_value_8 = line
         # Evaluate mathematical expressions in variable values
         var_value_1 = evaluate_math(var_value_1)
         var_value_2 = evaluate_math(var_value_2)
